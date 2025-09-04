@@ -11,6 +11,7 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.nativelocalstorage.NativeLocalStoragePackage
 import com.nativelocalstorage.NativeContactsPackage
+import com.nativelocalstorage.NativeNotificationPackage
 
 class MainApplication : Application(), ReactApplication {
 
@@ -22,6 +23,7 @@ class MainApplication : Application(), ReactApplication {
               // add(MyReactNativePackage())
               add(NativeLocalStoragePackage())
               add(NativeContactsPackage())
+              add(NativeNotificationPackage())
             }
 
         override fun getJSMainModuleName(): String = "index"
