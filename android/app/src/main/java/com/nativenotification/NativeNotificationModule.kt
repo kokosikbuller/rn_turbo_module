@@ -42,7 +42,7 @@ class NativeNotificationModule(reactContext: ReactApplicationContext) : NativeNo
   override fun getName() = NAME
 
   override fun showPreparing(): String {
-    // Проверяем разрешение на уведомления для Android 13+
+    // Checking notification permissions for Android 13+
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
       val permission = ContextCompat.checkSelfPermission(
         reactApplicationContext, 
@@ -54,20 +54,20 @@ class NativeNotificationModule(reactContext: ReactApplicationContext) : NativeNo
       }
     }
 
-    // Создаем кастомный RemoteViews для уведомления
+    // Creating a custom RemoteViews for notifications
     val customView = RemoteViews(reactApplicationContext.packageName, R.layout.notification_layout)
     
-    // Настраиваем элементы кастомного layout
+    // Configuring custom layout elements
     customView.setTextViewText(R.id.notification_title, "☕ Готовим ваш кофе!")
     
-    // Устанавливаем простой неопределенный прогресс
+    // We set a simple indefinite progress
     customView.setProgressBar(R.id.progress_bar, 100, 0, true)
 
-    // Создаем уведомление с кастомным layout
+    // Create a notification with a custom layout
     val notification: Notification = NotificationCompat.Builder(reactApplicationContext, CHANNEL_ID)
         .setSmallIcon(android.R.drawable.ic_popup_reminder)
-        .setCustomContentView(customView) // Используем кастомный layout
-        .setCustomBigContentView(customView) // Для развернутого состояния
+        .setCustomContentView(customView) // use a custom layout
+        .setCustomBigContentView(customView) // For the expanded state
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .setOngoing(true)
         .setColor(0xFF8A00.toInt())
@@ -76,7 +76,7 @@ class NativeNotificationModule(reactContext: ReactApplicationContext) : NativeNo
         .setAutoCancel(false) // Не исчезает при нажатии
         .build()
 
-    // Показываем уведомление с нативным неопределенным прогрессом
+    // Displaying a notification with native indefinite progress
     notificationManager.notify(NOTIFICATION_ID, notification)
     
     return "Custom notification with native indeterminate progress shown"

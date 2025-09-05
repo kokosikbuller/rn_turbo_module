@@ -6,7 +6,7 @@
     android:background="@drawable/notification_background"
     android:padding="16dp">
 
-    <!-- Иконка кофе -->
+    <!-- Coffee icon -->
     <ImageView
         android:id="@+id/coffee_icon"
         android:layout_width="48dp"
@@ -15,14 +15,12 @@
         android:layout_marginEnd="12dp"
         android:layout_gravity="center_vertical" />
 
-    <!-- Основной контент -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <!-- Заголовок -->
         <TextView
             android:id="@+id/notification_title"
             android:layout_width="wrap_content"
@@ -33,7 +31,6 @@
             android:textColor="#FF8A00"
             android:layout_marginBottom="8dp" />
 
-        <!-- Прогресс бар (неопределенный) -->
         <ProgressBar
             android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyleHorizontal"
