@@ -7,10 +7,12 @@ import {
   PermissionsAndroid,
   ScrollView,
   View,
+  StatusBar,
 } from 'react-native';
 
 import NativeLocalStorage from './specs/NativeLocalStorage';
 import NativeContacts from './specs/NativeContacts';
+import NativeNotification from './specs/NativeNotification';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const EMPTY = '<empty>';
@@ -64,8 +66,13 @@ function App(): React.JSX.Element {
     }
   }
 
+  async function showPreparing() {
+    console.log(NativeNotification.showPreparing());
+  }
+
   return (
     <SafeAreaView style={{flex: 1}}>
+      <StatusBar barStyle='default' />
       <Text style={styles.text}>
         Current stored value is: {value ?? 'No Value'}
       </Text>
@@ -78,6 +85,7 @@ function App(): React.JSX.Element {
       <Button title="Delete" onPress={deleteValue} />
       <Button title="Clear" onPress={clearAll} />
       <Button title="Get Contacts" onPress={getContacts} />
+      <Button title="Show Preparing" onPress={showPreparing} />
       <ScrollView>
         <View>
           <Text style={styles.text}>
