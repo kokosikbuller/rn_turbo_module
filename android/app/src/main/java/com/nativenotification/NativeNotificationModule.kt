@@ -73,7 +73,7 @@ class NativeNotificationModule(reactContext: ReactApplicationContext) : NativeNo
         .setColor(0xFF8A00.toInt())
         .setVibrate(longArrayOf(0, 200, 100, 200))
         .setLights(0xFF8A00.toInt(), 1000, 1000)
-        .setAutoCancel(false) // Не исчезает при нажатии
+        .setAutoCancel(false)
         .build()
 
     // Displaying a notification with native indefinite progress
