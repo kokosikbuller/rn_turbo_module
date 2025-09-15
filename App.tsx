@@ -32,7 +32,6 @@ function App(): React.JSX.Element {
 
   function saveValue() {
     const dataFromM = NativeLocalStorage?.setItem(editingValue ?? EMPTY, 'myKey');
-    console.log(`Data saved: ${dataFromM}`);
     
     setValue(editingValue);
   }
@@ -53,12 +52,9 @@ function App(): React.JSX.Element {
     );
 
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      const start = Date.now();
       const contactsJson = NativeContacts?.getContactList();
       
       const contactsPhone = JSON.parse(contactsJson);
-      const finish = Date.now() - start;
-      console.log('Finish => ', finish);
       
       setContacts(contactsPhone);
     } else {
