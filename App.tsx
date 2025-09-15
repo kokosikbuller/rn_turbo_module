@@ -32,6 +32,8 @@ function App(): React.JSX.Element {
 
   function saveValue() {
     const dataFromM = NativeLocalStorage?.setItem(editingValue ?? EMPTY, 'myKey');
+
+    console.log('dataFromM', dataFromM);
     
     setValue(editingValue);
   }
@@ -58,7 +60,7 @@ function App(): React.JSX.Element {
       
       setContacts(contactsPhone);
     } else {
-      console.warn("Permission denied. Please try again");
+      console.warn("Permission contacts denied");
     }
   }
 
@@ -67,7 +69,7 @@ function App(): React.JSX.Element {
   }
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={styles.flex}>
       <StatusBar barStyle='default' />
       <Text style={styles.text}>
         Current stored value is: {value ?? 'No Value'}
@@ -82,6 +84,7 @@ function App(): React.JSX.Element {
       <Button title="Clear" onPress={clearAll} />
       <Button title="Get Contacts" onPress={getContacts} />
       <Button title="Show Preparing" onPress={showPreparing} />
+
       <ScrollView>
         <View>
           <Text style={styles.text}>
@@ -101,6 +104,7 @@ function App(): React.JSX.Element {
           {Array.isArray(contacts) && contacts.length === 0 && <Text style={styles.text}>No contacts on your device</Text>}
         </View>
       </ScrollView>
+
     </SafeAreaView>
   );
 }
@@ -109,6 +113,9 @@ const styles = StyleSheet.create({
   text: {
     margin: 10,
     fontSize: 20,
+  },
+  flex: {
+    flex: 1
   },
   textInput: {
     margin: 10,
