@@ -62,7 +62,7 @@ function App(): React.JSX.Element {
       
       setContacts(contactsPhone);
     } else {
-      console.warn("Permission to read contacts denied");
+      console.warn("Permission denied");
     }
   }
 
